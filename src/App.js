@@ -1,7 +1,7 @@
 import "./App.css";
 
-import Expenseitem from "./components/Expenseitem";
-import Container from "./components/Container";
+import Expenseitem from "./components/expenses/Expenseitem";
+import Container from "./components/UI/Container";
 
 function App() {
   const expenses = [
