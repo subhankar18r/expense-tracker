@@ -1,6 +1,7 @@
 import "./App.css";
 
 import Expenseitem from "./components/Expenseitem";
+import Container from "./components/Container";
 
 function App() {
   const expenses = [
@@ -12,13 +13,18 @@ function App() {
   ];
 
   return (
-    <div>
+    <Container className="bg-gray-800 p-1 rounded-t-sm w-[60vw] m-auto mt-10">
       <Expenseitem
         title={expenses[0].title}
         date={expenses[0].date}
         amount={expenses[0].amount}
-      ></Expenseitem>
-    </div>
+      />
+      <Expenseitem
+        title={expenses[0].title}
+        date={expenses[0].date}
+        amount={expenses[0].amount}
+      />
+    </Container>
   );
 }
 
