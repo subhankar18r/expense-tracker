@@ -16,7 +16,7 @@ function App() {
   ];
 
   return (
-    <Container className="bg-gray-800 p-1 rounded-t-sm w-[60vw] m-auto mt-10">
+    <Container className="bg-gray-400 p-1 rounded-t-sm w-[60vw] m-auto mt-10">
       <Expenseitem
         title={expenses[0].title}
         date={expenses[0].date}
