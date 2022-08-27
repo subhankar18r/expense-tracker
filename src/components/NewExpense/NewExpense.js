@@ -1,9 +1,18 @@
+import ExpenseDate from "../Expenses/ExpenseDate";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+  const ExpenseDataHandler = (data) => {
+    const ExpenseData = {
+      id: Math.random().toString(),
+      ...data,
+    };
+    props.onAddExpense(ExpenseData);
+  };
+
   return (
     <div className="bg-purple-500  w-[60vw] m-auto mt-10">
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData={ExpenseDataHandler} />
     </div>
   );
 };

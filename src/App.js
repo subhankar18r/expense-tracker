@@ -15,10 +15,16 @@ function App() {
       },
     },
   ];
-
+  const addExpenseHandler = (data) => {
+    const expense = {
+      ...data,
+    };
+    console.log("in app.js");
+    console.log(expense);
+  };
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Container className="bg-gray-400 p-1 rounded-t-sm w-[60vw] m-auto mt-10">
         <Expenseitem
           title={expenses[0].title}
