@@ -1,20 +1,23 @@
+import { useState } from "react";
+
 import "./App.css";
 
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 import Container from "./components/UI/Container";
 
-function App() {
-  const expenses = [
-    {
-      date: new Date(),
-      title: "car insurance",
-      amount: 24.5,
-      dAmount() {
-        return "$" + this.amount;
-      },
+const prevAddedExpenses = [
+  {
+    title: "car insurance",
+    date: new Date(),
+    amount: 24.5,
+    dAmount() {
+      return "$" + this.amount;
     },
-  ];
+  },
+];
+function App() {
+  const [expenses, setExpenses] = useState(prevAddedExpenses);
   const addExpenseHandler = (data) => {
     const expense = {
       ...data,
@@ -26,7 +29,7 @@ function App() {
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Container className="bg-gray-400 p-1 rounded-t-sm w-[60vw] m-auto mt-10">
-        <Expenses expenses={expenses} />
+        <Expenses item={expenses} />
       </Container>
     </div>
   );
