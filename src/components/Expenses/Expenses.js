@@ -8,24 +8,33 @@ const Expenses = (props) => {
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    console.log(setFilteredYear);
   };
+
+  const filteredYearExpenses = props.item.filter((data) => {
+    return data.date.getFullYear() == filteredYear;
+  });
+
+  let expenseContent = <p>no expenses are added</p>;
+  if (filteredYearExpenses.length > 0) {
+    expenseContent = filteredYearExpenses.map((expense) => {
+      return (
+        <Expenseitem
+          key={expense.id}
+          title={expense.title}
+          date={expense.date}
+          amount={"$" + expense.amount}
+        />
+      );
+    });
+  }
+
   return (
     <div>
       <ExpensesFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {props.item.map((expense) => {
-        console.log(expense);
-        return (
-          <Expenseitem
-            title={expense.title}
-            date={expense.date}
-            amount={expense.dAmount()}
-          />
-        );
-      })}
+      {expenseContent}
     </div>
   );
 };

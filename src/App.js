@@ -8,23 +8,20 @@ import Container from "./components/UI/Container";
 
 const prevAddedExpenses = [
   {
+    id: 1,
     title: "car insurance",
     date: new Date(),
     amount: 24.5,
-    dAmount() {
-      return "$" + this.amount;
-    },
   },
 ];
-function App() {
+function App(props) {
   const [expenses, setExpenses] = useState(prevAddedExpenses);
   const addExpenseHandler = (data) => {
-    const expense = {
-      ...data,
-    };
-    console.log("in app.js");
-    console.log(expense);
+    setExpenses((prevExpense) => {
+      return [data, ...prevExpense];
+    });
   };
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
