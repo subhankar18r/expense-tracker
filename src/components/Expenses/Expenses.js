@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Expenseitem from "./Expenseitem";
+import ExpensesList from "./ExpensesList";
 import ExpensesFilter from "./ExpenseFilter";
 
 const Expenses = (props) => {
@@ -16,27 +16,13 @@ const Expenses = (props) => {
     return data.date.getFullYear().toString() === filteredYear;
   });
 
-  let expenseContent = <p>no expenses are added</p>;
-  if (filteredYearExpenses.length > 0) {
-    expenseContent = filteredYearExpenses.map((expense) => {
-      return (
-        <Expenseitem
-          key={expense.id}
-          title={expense.title}
-          date={expense.date}
-          amount={"$" + expense.amount}
-        />
-      );
-    });
-  }
-
   return (
     <div>
       <ExpensesFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {expenseContent}
+      <ExpensesList items={filteredYearExpenses} />
     </div>
   );
 };
