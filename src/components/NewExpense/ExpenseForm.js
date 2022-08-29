@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import NewExpense from "./NewExpense";
+
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -86,6 +88,13 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div>
+        <button
+          className="bg-purple-800 text-white p-3 m-4"
+          type="button"
+          onClick={props.onClose}
+        >
+          Cancel
+        </button>
         <button className="bg-purple-800 text-white p-3 m-4" type="submit">
           Add expenses
         </button>
